@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<HTML>
+
+  <head>
+
+    <meta charset="utf-8">
+    <!-- jQuery library (served from Google) -->
+    <script src="lib/jquery.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="http://bxslider.com/lib/jquery.bxslider.js"></script>
+    <!-- bxSlider CSS file -->
+    <link href="https://e7966e0d919a7ceec623576897fd332fa65eb8ee.googledrive.com/host/0B3voHl30iKQpQ05JTmtfTmdIcUU/jquery.bxslider.css" rel="stylesheet" />
+    <link href="http://bxslider.com/css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+  	<div class="slider">
+  		<ul class="bxslider">
+  			<li><img src="angrybirdslide1.png"/></li>
+  			<li><img src="angrybirdslide2.png"/></li>
+  			<li><img src="angrybirdslide3.png"/></li>
+  			<li><img src="angrybirdslide4.png"/></li>
+  			<li><img src="angrybirdslide5.png"/></li>
+  		</ul>
+  	</div>
+  	<script type="text/javascript">
+	  	$(document).ready(function(){
+	  		$('.bxslider').bxSlider({
+	  			slideWidth: 600,
+	  			adaptiveHeight: true,
+	  			autoControls: true,
+	  			auto: true,
+	  			mode: 'fade',
+	  			responsive: true
+	  		})
+	  	});
+  	</script>
+  </body>
+</HTML>

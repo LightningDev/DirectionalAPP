@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+
+<HTML>
+
+	<head>
+		<style type="text/css">
+		</style>
+		<title>Travel</title>
+
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.CSS" />
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+
+		<script src="js/jquery-2.1.1.min.js"></script>
+
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAEFs7pWX6Cvviwxh9Sc4cmcMy7KcrqOxY&libraries=places"> </script>
+		<script src="fastclick.js"></script>
+		// <script type="text/javascript">
+		// 	var option = {
+		// 		center: { lat: -27.4679, lng: 153.0278}
+		// 	}
+
+		// 	google.maps.event.addDomListener(window, 'pageshow', function() {
+		// 		var autocomplete_from = new google.maps.places.Autocomplete($('#from')[0], option);
+		// 		var autocomplete_des = new google.maps.places.Autocomplete($('#destination')[0], option);
+		// 	});
+		// </script>
+
+	</head>
+
+	<body onload="initFastButtons();">
+		<span id="fastclick">
+
+		<div data-role="page" id="jp">
+			
+			<div data-role="content">
+
+				<div id="jp_name">
+
+					<h1>Journey Planner </h1>
+
+				</div>
+
+				<div data-role="form">
+					<label for="text-basic">Start</label>
+					<input type="text" name="text-basic" id ="from" value="">
+					<label for="text-basic">Destination</label>
+					<input type="text" name="text-basic" id ="destination" value="">
+					<label for="text-basic">Time</label>
+					<input type="text" name="text-basic" id ="time" value="">
+					<label for="select-choice-1" class="select">Travel type</label>
+					<select name="select-choice-1" id="select-choice-1" data-native-menu="true">
+						<option value="walking">Walking</option>
+						<option value="transit">Public transport</option>
+						<option value="driving">Car</option>
+						<option value="bicycling">Bicycle</option>
+					</select>
+					<a href="#map" class="ui-btn ui-corner-all ui-btn-inline " style="margin-left:35%;" id="search_button">Search</a>
+					<a href="#" class="ui-btn ui-corner-all ui-btn-inline ">Swap </a>
+				</div>
+
+			</div>
+
+		</div><!-- /page -->
+
+		<div data-role="page" id="map">
+			<script type="text/javascript">
+				var directions = new google.maps.DirectionsService();
+				var renderer = new google.maps.DirectionsRenderer();
+				var map, transitLayer;
+
+				google.maps.event.addDomListener(window, 'pageshow', function() {
+					var mapOptions = {
+						center: { lat: -27.4679, lng: 153.0278},
+						zoom: 14
+					};
+					map = new google.maps.Map($('#my_map')[0], mapOptions);
+					google.maps.event.trigger(map, 'resize');
+					var autocomplete_from = new google.maps.places.Autocomplete($('#from')[0]);
+					autocomplete_from.bindTo('bounds', map);
+
+					var autocomplete_to = new google.maps.places.Autocomplete($('#destination')[0]);
+					autocomplete_to.bindTo('bounds', map);
+
+					transitLayer = new google.maps.TransitLayer();
+				});
+			</script>
+			<div id="my_map" style="width:400px;height:400px;"></div>
+		</div>
+	</span>
+	</body>
+
+</HTML>
